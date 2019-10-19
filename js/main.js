@@ -12,14 +12,17 @@ function filtrarFotos(pLista, pAlbumId) {
 }
 
 // Se crea la funcion para pintar los elementos recibidos o filtrados
-function pintarFotos(pListaFiltrada) {
+function pintarFotos(pLista) {
   var contenido = "";
-  for (var i = 0; i < 150; i++) {
-    contenido += `
-                        <div class="img">
-                        <img src="${pListaFiltrada[i].thumbnailUrl}" alt="">
-                        </div>
-                        `;
+
+  for (foto of pLista) {
+    if (foto.id <= 150) {
+      contenido += `
+                              <div class="img">
+                              <img src="${foto.thumbnailUrl}" alt="">
+                              </div>
+                              `;
+    }
   }
-  seccionFoto.innerHTML += contenido;
+  seccionFoto.innerHTML = contenido;
 }
