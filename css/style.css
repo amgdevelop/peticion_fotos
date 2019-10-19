@@ -6,9 +6,11 @@
 
 main {
   display: flex;
+  height: auto;
 }
 main aside {
   width: 20%;
+
   background-color: #ddd;
   border-right: 2px solid black;
 }
@@ -39,6 +41,6 @@ main section {
 main #seccionFoto div {
   width: 150px;
   height: 150px;
-  bgcolor: gray;
+  background-color: gray;
   border: 1px solid black;
 }

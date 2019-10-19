@@ -1,32 +1,25 @@
-var listaFotos = new Array();
 var seccionFoto = document.getElementById("seccionFoto");
-function peticionUrl() {
-  var url = "https://jsonplaceholder.typicode.com/photos";
-  var miJson = new XMLHttpRequest();
-  miJson.open("get", url, true);
-  miJson.send();
-  miJson.addEventListener("readystatechange", cargarArchivo);
-}
+// Se realiza la funcion de filtrado
 
-peticionUrl();
-
-function cargarArchivo(event) {
-  if (event.target.readyState == 4 && event.target.status == 200) {
-    var listaFotos = new Array();
-    listaFotos = JSON.parse(event.target.response);
-    pintarFotos(listaFotos);
-    return listaFotos;
+function filtrarFotos(pLista, pAlbumId) {
+  var listaFiltrada = new Array();
+  for (lista of pLista) {
+    if (lista.albumId == pAlbumId) {
+      listaFiltrada.push(lista);
+    }
   }
+  return listaFiltrada;
 }
 
-function pintarFotos(listaFotos) {
+// Se crea la funcion para pintar los elementos recibidos o filtrados
+function pintarFotos(pListaFiltrada) {
   var contenido = "";
-  for (var i = 0; i < 50; i++) {
+  for (var i = 0; i < 150; i++) {
     contenido += `
-                    <div class="img">
-                    <img src="${listaFotos[i].thumbnailUrl}" alt="">
-                    </div>
-                    `;
+                        <div class="img">
+                        <img src="${pListaFiltrada[i].thumbnailUrl}" alt="">
+                        </div>
+                        `;
   }
   seccionFoto.innerHTML += contenido;
 }
